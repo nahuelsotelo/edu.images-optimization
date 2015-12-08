@@ -56,10 +56,424 @@
 <section>
   <h2>Contenidos</h2>
   <ol>
-    <li>Introducción</li>
-    <li></li>
+    <li>Introducción (coste de las imágenes)</li>
+    <li>Bitmap</li>
+    <li>Tipos de compresión</li>
+    <li>Optimización manual</li>
+    <li>Sprites</li>
+    <li>Optimización automática</li>
+    <li>SVG</li>
+    <li>SVG aplicacion</li>
+    <li>Nuevos formatos de imágen</li>
   </ol>
 </section>
+
+<!--
+
+- Compress Images with the right format at the lowest acceptable quality level
+
+  - Hand-tune (where possible) your compression quality for all images
+  - Automate the rest to get the best performance
+
+- Investigate using WebP for all your image needs
+
+- Save your images with progressive options to improve user perception of your pages’ load times
+
+- Investigate other interesting ways to get better compression, or transparency. Think outside the box!
+
+-->
+
+
+<section>
+  <section>
+    <h1>El coste de las imágenes</h1>
+  </section>
+
+  <section>
+    <blockquote>
+      <p>“A picture is worth a thousand words, but its cost can be so much greater.”</p>
+      <footer>- <cite><a href="http://www.fivesimplesteps.com/products/practical-responsive-images">"Practical responsive images"</a>, Ben Seymour</cite></footer>
+    </blockquote>
+  </section>
+
+  <section>
+    <p>Las imágenes son el recurso que más añade al peso total de la página.</p>
+    <figure>
+      <img src="img/chart-content.png" alt="" style="height: 24rem;">
+      <figcaption><a href="http://mobile.httparchive.org/interesting.php#bytesperpage">Average Bytes per Page by Content Type</a></figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <p>En móvil la proporción se mantiene.</p>
+    <figure>
+      <img src="img/chart-content-mobile.png" alt="" style="height: 24rem;">
+      <figcaption><a href="http://mobile.httparchive.org/interesting.php#bytesperpage">Average Bytes per Page by Content Type</a></figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <p>En móvil, el alto peso de las imágenes descargadas no sólo afecta la experiencia de usuario sino qu epuede tener un alto coste para su bolsillo dependiendo las condiciones de su plan de datos.</p>
+    <p>Un ejemplo: <a href="https://mobiforge.com/research-analysis/performance-money-part-1-end-users-wallet">Performance is money, part 1: the end-user's wallet</a></p>
+  </section>
+
+  <section>
+    <h2>Enlaces relacionados:</h2>
+    <ul>
+      <li>
+        <a href="">“”</a> - <i></i>
+      </li>
+  </section>
+</section>
+
+
+<section>
+  <section>
+    <h1>Bitmap</h1>
+  </section>
+
+  <section>
+    <h2>GIF (1987)</h2>
+    <figure>
+      <img src="img/robocop.gif" alt="" style="height: 60vh">
+      <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=zbCbwP6ibR4">Robocop</a> (1987)</figcaption>
+    </figure>
+
+  </section>
+
+  <section>
+    <ul>
+      <li>256 colores</li>
+      <li>Transparencia simple (no Alpha)</li>
+      <li>Animación</li>
+      <li>Compresión <b>sin</b> pérdida (Lossless)</li>
+      <li><strong>Buenos para:</strong> gifs de gatos.</li>
+      <li><strong>Malos para:</strong> casi todo lo demás.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>JPG (1992)</h2>
+    <figure>
+      <img src="img/ash.jpg" alt="" style="height: 60vh">
+      <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=Y_51HrX_LB0">Army of Darkness</a> (1992)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <ul>
+      <li>Color RGB (24 bits)</li>
+      <li>Sin transparencia</li>
+      <li>Sin animación</li>
+      <li>Compresión <b>con</b> pérdida (<i>Lossy</i>)</li>
+      <li><strong>Buenos para:</strong> fotos (degradados suaves, areas de bajo contraste).</li>
+      <li><strong>Malos para</strong> logos (borders planos, areas de alto contraste).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>PNG (1996)</h2>
+    <figure>
+      <img src="img/trainspotting.png" alt="" style="height: 60vh">
+      <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=8LuxOYIpu-I">Trainspotting</a> (1996)</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <ul>
+      <li>Paletas de color de 8 a 32 bits</li>
+      <li>Transparencia por Canal Alpha</li>
+      <li>Animación (pero sin soporte de navegadores :( )</li>
+      <li>Problemas con la trasparencia en IE 6-8</li>
+      <li>Compresión <b>sin</b> pérdida (Lossless)</li>
+      <li><strong>Buenos para:</strong> logos, ilustración (colores planos, bordes definidos, transparencia)</li>
+      <li><strong>Malos para:</strong> fotografía</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Enlaces relacionados:</h2>
+    <ul>
+      <li>
+        <a href="http://optipng.sourceforge.net/pngtech/optipng.html">“A guide to PNG optimization”</a>
+      </li>
+  </section>
+</section>
+
+
+<section>
+  <section>
+    <h1>Tipos de compresión</h1>
+  </section>
+
+  <section>
+    <h2>Lossy Compression</h2>
+    <p>Es un tipo de compresión que ocasiona perdida de información durante el proceso.</p>
+    <p>La información perdida <b>no</b> se recupera cuando el cliente descomprime la imágen para representarla, por lo que es importante evaluar el ratio peso/calidad que queremos para como resultado final.</p>
+  </section>
+
+  <section>
+    <h3>Ejemplo de lossy compression</h3>
+    <table style="font-size: .8em;">
+      <tr>
+        <th>Antes</th>
+        <th style="border-left: 1px dotted rgba(0, 0, 0, .3); width: 50%;">Después</th>
+      </tr>
+      <tr>
+        <td>0.123, 1.2345, 21.2165, 12.123</td>
+        <td style="border-left: 1px dotted rgba(0, 0, 0, .3)">0,0,20,10</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Lossless Compression</h2>
+    <p>Este tipo de compresión consigue a base de diferentes algoritmos reducir el peso de los ficheros sin perder información.</p>
+    <p>La redución de tamaño no suele ser tan drástica como la de una compresión lossy pero la imágen se descomprime intacta.</p>
+  </section>
+
+  <section>
+    <h3>Ejemplo de lossy compression</h3>
+    <table style="font-size: .8em;">
+      <tr>
+        <th>Antes</th>
+        <th style="border-left: 1px dotted rgba(0, 0, 0, .3); width: 50%;">Después</th>
+      </tr>
+      <tr>
+        <td>aaaaabbbbbcccddddeeeeffffaaaaabb</td>
+        <td style="border-left: 1px dotted rgba(0, 0, 0, .3)">a5b4c2d4e4f4a5bb0</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Enlaces relacionados:</h2>
+    <ul>
+      <li>
+        <a href="https://www.youtube.com/watch?v=k4Xkpawt1EU">“Image Compression: Putting your Images on a Diet”</a> - <i>Guy Podjarny</i>
+      </li>
+  </section>
+</section>
+
+
+<section>
+  <section>
+    <h1>Optimización manual</h1>
+  </section>
+
+  <section>
+    <h3>Guardar para web en Photoshop</h3>
+    <p style="text-align:center;">
+      <img src="img/photoshop.png" alt="" style="height: 75vh;">
+    </p>
+
+  </section>
+
+  <section>
+    <ol>
+      <li>Elegir el formato adecuado</li>
+      <li>JPG: Elegir el nivel de compresion (75-70 óptimo)</li>
+      <li>PNG: Limitar la paleta de colores</li>
+      <li>Opcional: Activar la opción de descarga progresiva (JPG) / entrelazada (PNG)</li>
+      <li>Quitar la metadata (sino la necesitamos)</li>
+    </ol>
+
+    <aside class="notes">
+      <p>La descarga entrelazada / progresiva aumenta el peso del fichero aunque el usuario perciba una mejora en la performance </p>
+    </aside>
+  </section>
+
+  <section>
+    <h3>Aplicaciones de optimización</h3>
+    <ul>
+      <li><a href="">ImgOptim</a></li>
+      <li><a href="">ImageAlpha</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Enlaces relacionados:</h2>
+    <ul>
+      <li>
+        <a href="">“”</a> - <i></i>
+      </li>
+  </section>
+</section>
+
+
+<section>
+  <section>
+    <h1>Vectores</h1>
+  </section>
+  <section>
+    <h2>SVG (2001)</h2>
+
+    <figure data-height="420" data-theme-id="0" data-slug-hash="aOxXBv" data-default-tab="result" data-user="felixgonthier" class='codepen'>
+    See the Pen <a href='http://codepen.io/felixgonthier/pen/aOxXBv/'>Mike Wazowski in svg</a> by Felix Gonthier (<a href='http://codepen.io/felixgonthier'>@felixgonthier</a>) on <a href='http://codepen.io'>CodePen</a>.</figure>
+    <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+    <p class="fz-s" style="margin-top: 0; text-align: center;"><a href="">Monster Inc.</a> (2001)</p>
+  </section>
+
+  <section>
+    <ul>
+      <li>Gráficos vectoriales en formato XML.</li>
+      <li></li>
+    </ul>
+  </section>
+</section>
+
+
+<section>
+  <section>
+    <h1>Sprites</h1>
+  </section>
+
+  <section>
+    <p>La técnica de <i lang="en">sprites</i> proviene de la industria del videojuego y consiste en combinar diferentes imágenes en una sóla para luego acceder solo al fragmento de imágen que necesitamos en cada caso.</p>
+
+    <p>En web, esto nos permite tener una sola llamada al servidor en lugar de una por cada imágen.</p>
+  </section>
+
+  <section>
+    <h3>Sprites por imágen</h3>
+    <div style="display: flex;">
+      <div style="flex-grow: 1;">
+        <pre><code>
+    .icon {
+      background-image: url('img/sprite.png');
+      background-repeat: no-repeat;
+      width: 24px;
+      height: 24px;
+    }
+
+    .icon--alert    { background-position: 0px 0px; }
+    .icon--favorite { background-position: 0px -24px; }
+    .icon--share    { background-position: -48px -24x; }
+    .icon--mail     { background-position: 0 -48px; }
+    ...
+        </code></pre>
+    </div>
+
+    <div style="flex-shrink: 0; order: -1; margin-right: 2rem;">
+      <img src="img/sprite.png" alt="" style=" border: 1px solid rgba(0,0,0,.2); box-shadow: none; padding: 1rem; height: 60vh;">
+    </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Sprites por css</h3>
+
+    <pre><code>
+    [class^=icon-] {
+      background-repeat: no-repeat;
+    }
+
+    .icon-github {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANS...');
+    }
+
+    .icon-twitter {
+      background-image: url('data:image/png;base64,OP444iVBORve=w0KG...');
+    }
+
+    .icon-facebook {
+      background-image: url('data:image/png;base64,AAff33VBORw0Kojij...');
+    }
+    </code></pre>
+
+    <p class="fz-s" style="text-align: center;">Bad practice? (<a href="http://www.mobify.com/blog/data-uris-are-slow-on-mobile/">“On Mobile, Data URIs are 6x Slower than Source Linking”</a>)</p>
+  </section>
+
+  <section>
+    <h2>Enlaces relacionados:</h2>
+    <ul>
+      <li>
+        <a href="http://sixrevisions.com/css/css-sprites-site-speed/">“Saving Bandwidth and Improving Site Speed Using CSS Sprites”</a> - <i>Peter Richards</i>
+      </li>
+  </section>
+</section>
+
+
+<section>
+  <section>
+    <h1>Optimización automática</h1>
+  </section>
+  <section>
+    <h2>JPG / GIF / PNG</h2>
+    <ul>
+      <li>
+        <a href="http://jamiemason.github.io/ImageOptim-CLI/">ImageOptim-CLI</a>
+        <ul style="margin-bottom: 3rem;">
+          <li>
+            <a href="https://github.com/allbitsnbytes/gulp-imageoptim">gulp-imageoptim</a>
+          </li>
+          <li>
+            <a href="https://github.com/JamieMason/grunt-imageoptim">grunt-imageoptim</a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="https://github.com/imagemin/imagemin">Imagemin</a>
+        <ul>
+          <li>
+            <a href="https://github.com/sindresorhus/gulp-imagemin">gulp-imagemin</a>
+          </li>
+          <li>
+            <a href="https://github.com/gruntjs/grunt-contrib-imagemin">grunt-contrib-imagemin</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>SVG</h2>
+    <ul>
+      <li>
+        Svgo
+        <ul>
+          <li>grunt-svgmin</li>
+          <li>gulp-svgmin</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Sprites</h2>
+    <ul>
+      <li>
+        <a href="http://www.grumpicon.com/">Grumpicon</a>
+        <ul>
+          <li>
+            <a href="http://www.grunticon.com/">Grunticon</a>
+          </li>
+          <li>
+            <a href="https://github.com/filamentgroup/gulpicon">Gulpicon</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Enlaces relacionados:</h2>
+    <ul>
+      <li>
+        <a href="http://addyosmani.com/blog/image-optimization-tools/">“Tools for image optimization”</a> - <i>Addy Osmani</i>
+      </li>
+
+      <li>
+        <a href="http://yeoman.io/blog/performance-optimization.html">“Grunt and Gulp tasks for performance optimization”</a>
+      </li>
+
+      <li>
+        <a href="https://www.youtube.com/watch?v=vCHkpxPP6Es">“Advanced Image Compression Techniques Tutorial”</a> - <i>Tobias Baldauf</i>
+      </li>
+  </section>
+</section>
+
 
 
 

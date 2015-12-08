@@ -309,6 +309,9 @@ body {
     font-size: 1.1em;
     font-weight: 100; }
 
+.reveal section img {
+  border: 0; }
+
 .reveal ul {
   display: block; }
 
@@ -546,3 +549,6 @@ based on dark.css by Ivan Sagalaev
 .xml .css,
 .xml .hljs-cdata {
   opacity: 0.5; }
+
+[class^=culo-] {
+  outline: 1px solid red; }
