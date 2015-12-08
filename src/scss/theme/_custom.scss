@@ -1,4 +1,9 @@
 .reveal {
+  mark {
+    display: inline-block;
+    padding: 0 .5rem;
+    background-color: hsla(60, 75%, 70%, .65);
+  }
   p,
   blockquote {
     text-align: left;
@@ -180,6 +185,16 @@
       &:first-of-type {
         outline: 1px solid red;
       }
+    }
+  }
+
+  .related-links {
+    li {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    i {
+      display: block;
     }
   }
 }
