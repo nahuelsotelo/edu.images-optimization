@@ -549,3 +549,6 @@ based on dark.css by Ivan Sagalaev
 .xml .css,
 .xml .hljs-cdata {
   opacity: 0.5; }
+
+[class^=culo-] {
+  outline: 1px solid red; }
