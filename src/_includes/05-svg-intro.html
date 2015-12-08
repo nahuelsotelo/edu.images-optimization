@@ -2,6 +2,7 @@
   <section>
     <h1>Vectores</h1>
   </section>
+
   <section>
     <h2>SVG (2001)</h2>
 
@@ -25,5 +26,75 @@
       <li><strong>Buenos para: </strong> Iconos, lementos de UI</li>
       <li><strong>Malos para: </strong> Fotografías</li>
     </ul>
+  </section>
+
+  <section>
+    <h3>Utilizando SVG</h3>
+    <p class="fz-s" style="margin-bottom: .5rem;">Como <a href="http://caniuse.com/#feat=svg-img"><code>&#060;img&#062;</code></a>:</p>
+    <pre style="margin-top: 0;"><code class="hljs html" style="padding: .75rem;" data-trim>
+  <img src="twitter.svg" alt="Twitter">
+    </code></pre>
+
+    <p class="fz-s" style="margin-bottom: .5rem;">Como <a href="http://caniuse.com/#feat=svg-css">CSS background</a>:</p>
+    <pre style="margin-top: 0;"><code class="hljs css" style="padding: .75rem;" data-trim>
+  .icon-twitter { background-image: url(twitter.svg); }
+    </code></pre>
+
+    <p class="fz-s" style="margin-bottom: .5rem;">Como <a href="http://caniuse.com/#feat=svg-html5">SVG inline</a>:</p>
+    <pre style="margin-top: 0;"><code class="hljs html" style="padding: .75rem;" data-trim>
+&#60;div&#62;
+  &#60;svg xmlns="http://www.w3.org/2000/svg"
+       width="78" height="78" viewBox="0 0 78 78"&#62;
+    &#60;path fill="#0E7983" d="M77 15.2c-2.7 1.2-5.9 2.1-9 2.5 3.1-1.9 5.7-5
+      6.9-8.5-2.9 1.9-6.3 3.1-9.8 3.7-2.9-3.1-6.9-5-11.3-5-8.6 0-15.5 6.8-15.5
+      15.3 0 1.2.2 2.3.4 3.5-13.2-.5-24.5-6.7-32.3-16-1.3 2.3-2.1 5-2.1 7.6 0
+      5.4 2.7 10.1 6.9 12.8-2.5 0-5-.8-7.1-1.9v.2c0 7.4 5.4 13.7 12.6 15.1-
+      1.3.4-2.7.6-4.2.6-1 0-1.9 0-2.9-.2 1.9 6.2 7.7 10.5 14.5 10.7-5.2
+      4.1-12.2 6.6-19.3 6.6-1.3 0-2.5 0-3.8-.2 6.9 4.5 15.1 7 23.9 7 28.7
+      0 44.4-23.4 44.4-43.8v-2.1c3.1-2.1 5.6-4.8 7.7-7.9z"/&#62;
+  &#60;/svg&#62;
+&#60;/div&#62;
+    </code></pre>
+  </section>
+
+  <section>
+    <h3>Guardar SVG desde Illustrator</h3>
+    <p style="text-align:center;">
+      <img src="img/svg-options-panel-01.png" alt="" style="height: 36vh;">
+    </p>
+
+    <ul style="font-size: 1.5rem; margin: 0;">
+      <li><strong>SVG Profiles: SVG 1.1</strong> - Es una versión con <a href="http://caniuse.com/#feat=svg">buen soporte</a>. Versiones anteriores no soportan algunas características como la transparencia.</li>
+      <li><strong>Fonts Type: SVG</strong> - También podemos trazar el texto a outlines.</li>
+      <li><strong>Subsetting: None (Use System Fonts)</strong> - Esta opción utilizará las fuentes del sistema ya que las fuentes SVG tienen problemas en algunos navegadores (FF & IE).</li>
+      <li><strong>Images: Link</strong> - De esta manera mantendremos control sobre la compresión de los bitmap, aunque tendremos que cambiar la ruta a mano ya que Illustrator la apuntará a nuestro disco.</li>
+    </ul>
+
+    <aside class="notes">
+      <p>No hay demasiada diferencia de peso entre embeber la fuente y trazarla.</p>
+    </aside>
+  </section>
+
+  <section>
+    <p style="text-align:center; margin: 0;">
+      <img src="img/svg-options-panel-02.png" alt="" style="height: 39vh;">
+    </p>
+
+    <ul style="font-size: 1.5rem; margin: 0;">
+      <li><strong>Uncheck 'Preserve Illustrator Editing Capabilities'</strong>.</li>
+      <li><strong>Decimal places: 1</strong> - Define los decimales que definen cada punto. Reducir el valor por defecto de 3 a 1 <a href="http://creativedroplets.com/samples/svg/decimal/_EdgeReflow%20napoleon%20decimal_preview.html">no produce ningun cambio visual</a> pero reduce el tamaño del archivo considerablemente.</li>
+      <li><strong>CSS Properties: Style Elements</strong> - Esta opción colocará los estilos dentro de un tag <code>&#060;style&#062;</code> al comienzo del svg.</li>
+      <li>El resto de las opciones las dejaremos como vienen por defecto.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Enlaces relacionados:</h2>
+    <ul>
+      <li>
+        <a href="https://www.filamentgroup.com/lab/grumpicon-workflow.html">“A Designer’s Guide to Grumpicon, or: How I Learned to Stop Using Font Icons and Love SVGs”</a>
+      </li>
+
+      <li><a href="http://creativedroplets.com/export-svg-for-the-web-with-illustrator-cc/">“Export SVG for the web with Illustrator CC”</a> - <i>Michael Chaize</i></li>
   </section>
 </section>

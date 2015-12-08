@@ -13,7 +13,7 @@
     <h3>Sprites por imágen</h3>
     <div style="display: flex;">
       <div style="flex-grow: 1;">
-        <pre><code>
+        <pre><code class="hljs css">
     .icon {
       background-image: url('img/sprite.png');
       background-repeat: no-repeat;
@@ -38,7 +38,7 @@
   <section>
     <h3>Sprites por css</h3>
 
-    <pre><code>
+    <pre><code class="hljs css">
     [class^=icon-] {
       background-repeat: no-repeat;
     }
@@ -57,6 +57,41 @@
     </code></pre>
 
     <p class="fz-s" style="text-align: center;">Bad practice? (<a href="http://www.mobify.com/blog/data-uris-are-slow-on-mobile/">“On Mobile, Data URIs are 6x Slower than Source Linking”</a>)</p>
+  </section>
+
+  <section>
+    <h3>Sprites SVG mediante <code>&#060;symbol&#062;</code></h3>
+
+    <p class="fz-s" style="margin-bottom: .5rem;">Definición del SVG:</p>
+    <pre style="margin: 0;"><code class="hljs html" style="padding: 0.75rem 1rem" data-trim>
+&#060;svg xmlns="http://www.w3.org/2000/svg" style="display: none;"&#062;
+  &#060;symbol id="icon-twitter" viewBox="214.7 0 182.6 792"&#062;
+    &#060;!-- contenido del svg --&#062;
+  &#060;/symbol&#062;
+  &#060;symbol id="icon-facebook" viewBox="0 26 100 48"&#062;
+    &#060;!-- contenido del svg --&#062;
+  &#060;/symbol&#062;
+&#060;/svg&#062;
+    </code></pre>
+
+    <p class="fz-s" style="margin-bottom: .5rem;">Uso con el svg inline en el HTML:</p>
+    <pre style="margin: 0;"><code class="hljs html" style="padding: 0.75rem 1rem" data-trim>
+&#060;svg class="twitter-icon"&#062;
+  &#060;use xlink:href="#icon-twitter"&#062;&#060;/use&#062;
+&#060;svg&#062;
+    </code></pre>
+
+    <p class="fz-s" style="margin-bottom: .5rem;">Uso con el svg en un archivo externo:</p>
+    <pre style="margin: 0;"><code class="hljs html" style="padding: 0.75rem 1rem" data-trim>
+&#060;svg class="twitter-icon"&#062;
+  &#060;use xlink:href="ruta/externa/icons.svg#icon-twitter"&#062;&#060;/use&#062;
+&#060;svg&#062;
+    </code></pre>
+
+    <aside class="notes">
+      <p>Si lo usamos inline en el HTML no cachea</p>
+      <p>Lo podemos referenciar externo pero necesitamos fallback para IE9+ (svg4everybody)</p>
+    </aside>
   </section>
 
   <section>
