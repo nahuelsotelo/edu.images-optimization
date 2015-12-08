@@ -90,8 +90,8 @@
   </section>
 
   <section>
-    <blockquote>
-      <p>“A picture is worth a thousand words, but its cost can be so much greater.”</p>
+    <blockquote style="width: 75%;">
+      <p style="font-size: 3rem;">“A picture is worth a thousand words, but its cost can be so much greater.”</p>
       <footer>- <cite><a href="http://www.fivesimplesteps.com/products/practical-responsive-images">"Practical responsive images"</a>, Ben Seymour</cite></footer>
     </blockquote>
   </section>
@@ -119,9 +119,15 @@
 
   <section>
     <h2>Enlaces relacionados:</h2>
-    <ul>
+    <ul class="related-links">
       <li>
-        <a href="">“”</a> - <i></i>
+        <a href="http://www.webperformancetoday.com/2014/12/02/page-bloat-update-average-top-1000-web-page-1795-kb-size/">“Page bloat update: The average top 1000 web page is 1795 KB in size”</a> <i>&#8213; Tammy Everts</i>
+      </li>
+      <li>
+        <a href="https://vimeo.com/108328247">“Design decisions through the lens of a performance budget”</a> <i>&#8213; Yesenia Perez-Cruz</i>
+      </li>
+      <li>
+        <a href="http://danielmall.com/articles/how-to-make-a-performance-budget/">“How to make a performance budget”</a> <i>&#8213; Dan Mall</i>
       </li>
   </section>
 </section>
@@ -133,76 +139,170 @@
   </section>
 
   <section>
-    <h2>GIF (1987)</h2>
-    <figure>
-      <img src="img/robocop.gif" alt="" style="height: 60vh">
-      <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=zbCbwP6ibR4">Robocop</a> (1987)</figcaption>
-    </figure>
+  <h2>Tipos de compresión</h2>
+</section>
 
-  </section>
+<section>
+  <h3>Lossy Compression</h3>
+  <p class="fz-m">Es un tipo de compresión que ocasiona <mark>perdida de información</mark> durante el proceso.</p>
+  <p class="fz-m">La información perdida <strong>no</strong> se recupera cuando el cliente descomprime la imágen para representarla, por lo que es importante evaluar el ratio peso/calidad que queremos para como resultado final.</p>
+  <table style="font-size: .8em; margin-top: 4rem;">
+    <tr>
+      <th>Antes</th>
+      <th style="border-left: 1px dotted rgba(0, 0, 0, .3); width: 50%;">Después</th>
+    </tr>
+    <tr>
+      <td>0.123, 1.2345, 21.2165, 12.123</td>
+      <td style="border-left: 1px dotted rgba(0, 0, 0, .3)">0,0,20,10</td>
+    </tr>
+  </table>
+</section>
 
-  <section>
-    <ul>
-      <li>256 colores</li>
-      <li>Transparencia simple (no Alpha)</li>
-      <li>Animación</li>
-      <li>Compresión <b>sin</b> pérdida (Lossless)</li>
-    </ul>
-    <hr>
-    <ul>
-      <li><strong>Buenos para:</strong> gifs de gatos.</li>
-      <li><strong>Malos para:</strong> casi todo lo demás.</li>
-    </ul>
-  </section>
+<section>
+  <h3>Lossless Compression</h3>
+  <p class="fz-m">Este tipo de compresión consigue a base de diferentes algoritmos reducir el peso de los ficheros <mark>sin perder información</mark>.</p>
+  <p class="fz-m">La redución de tamaño no suele ser tan drástica como la de una compresión lossy pero la imágen se descomprime intacta.</p>
+  <table style="font-size: .8em; margin-top: 4rem;">
+    <tr>
+      <th>Antes</th>
+      <th style="border-left: 1px dotted rgba(0, 0, 0, .3); width: 50%;">Después</th>
+    </tr>
+    <tr>
+      <td>aaaaabbbbbcccddddeeeeffffaaaaabb</td>
+      <td style="border-left: 1px dotted rgba(0, 0, 0, .3)">a5b4c2d4e4f4a5bb0</td>
+    </tr>
+  </table>
+</section>
 
-  <section>
-    <h2>JPG (1992)</h2>
-    <figure>
-      <img src="img/ash.jpg" alt="" style="height: 60vh">
-      <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=Y_51HrX_LB0">Army of Darkness</a> (1992)</figcaption>
-    </figure>
-  </section>
-
-  <section>
-    <ul>
-      <li>Color RGB (24 bits)</li>
-      <li>Sin transparencia</li>
-      <li>Sin animación</li>
-      <li>Compresión <b>con</b> pérdida (<i>Lossy</i>)</li>
-    </ul>
-    <hr>
-    <ul>
-      <li><strong>Buenos para:</strong> fotos (degradados suaves, areas de bajo contraste).</li>
-      <li><strong>Malos para</strong> logos (borders planos, areas de alto contraste).</li>
-    </ul>
-  </section>
 
   <section>
-    <h2>PNG (1996)</h2>
-    <figure>
-      <img src="img/trainspotting.png" alt="" style="height: 60vh">
-      <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=8LuxOYIpu-I">Trainspotting</a> (1996)</figcaption>
-    </figure>
-  </section>
+  <h2>Formatos Bitmap</h2>
+</section>
+
+<section>
+  <h3>GIF (1987)</h3>
+  <figure>
+    <img src="img/robocop.gif" alt="" style="height: 60vh">
+    <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=zbCbwP6ibR4">Robocop</a> (1987)</figcaption>
+  </figure>
+
+</section>
+
+<section>
+  <ul>
+    <li>256 colores</li>
+    <li>Transparencia simple (no Alpha)</li>
+    <li>Animación</li>
+    <li>Compresión <b>sin</b> pérdida (Lossless)</li>
+  </ul>
+  <hr>
+  <ul>
+    <li><strong>Buenos para:</strong> gifs de gatos.</li>
+    <li><strong>Malos para:</strong> casi todo lo demás.</li>
+  </ul>
+</section>
+
+<section>
+  <h3>JPG (1992)</h3>
+  <figure>
+    <img src="img/ash.jpg" alt="" style="height: 60vh">
+    <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=Y_51HrX_LB0">Army of Darkness</a> (1992)</figcaption>
+  </figure>
+</section>
+
+<section>
+  <ul>
+    <li>Color RGB (24 bits)</li>
+    <li>Sin transparencia</li>
+    <li>Sin animación</li>
+    <li>Compresión <b>con</b> pérdida (<i>Lossy</i>)</li>
+  </ul>
+  <hr>
+  <ul>
+    <li><strong>Buenos para:</strong> fotos (degradados suaves, areas de bajo contraste).</li>
+    <li><strong>Malos para</strong> logos (borders planos, areas de alto contraste).</li>
+  </ul>
+</section>
+
+<section>
+  <h3>PNG (1996)</h3>
+  <figure>
+    <img src="img/trainspotting.png" alt="" style="height: 60vh">
+    <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=8LuxOYIpu-I">Trainspotting</a> (1996)</figcaption>
+  </figure>
+</section>
+
+<section>
+  <ul>
+    <li>Paletas de color de 8 a 32 bits</li>
+    <li>Transparencia por Canal Alpha</li>
+    <li>Animación (pero sin soporte de navegadores :( )</li>
+    <li>Problemas con la trasparencia en IE 6-8</li>
+    <li>Compresión <b>sin</b> pérdida (Lossless)</li>
+  </ul>
+  <hr>
+  <ul>
+    <li><strong>Buenos para:</strong> logos, ilustración (colores planos, bordes definidos, transparencia)</li>
+    <li><strong>Malos para:</strong> fotografía</li>
+  </ul>
+</section>
+
 
   <section>
-    <ul>
-      <li>Paletas de color de 8 a 32 bits</li>
-      <li>Transparencia por Canal Alpha</li>
-      <li>Animación (pero sin soporte de navegadores :( )</li>
-      <li>Problemas con la trasparencia en IE 6-8</li>
-      <li>Compresión <b>sin</b> pérdida (Lossless)</li>
-    </ul>
-    <hr>
-    <ul>
-      <li><strong>Buenos para:</strong> logos, ilustración (colores planos, bordes definidos, transparencia)</li>
-      <li><strong>Malos para:</strong> fotografía</li>
-    </ul>
-  </section>
+  <h2>Optimización manual</h2>
+</section>
+
+<section>
+  <h3>Guardar para web en Photoshop</h3>
+  <p style="text-align:center;">
+    <img src="img/photoshop.png" alt="" style="height: 75vh;">
+  </p>
+</section>
+
+<section>
+  <ol>
+    <li>Elegir el formato adecuado</li>
+    <li>Recortar la imágen al tamaño de final</li>
+    <li>JPG: Elegir el nivel de compresion (75-70 óptimo)</li>
+    <li>PNG: Limitar la paleta de colores</li>
+    <li>Opcional: Activar la opción de descarga progresiva (JPG) / entrelazada (PNG)</li>
+    <li>Quitar la metadata (sino la necesitamos)</li>
+  </ol>
+
+  <aside class="notes">
+    <p>La descarga entrelazada / progresiva aumenta el peso del fichero aunque el usuario perciba una mejora en la performance </p>
+  </aside>
+</section>
+
+<section>
+  <h3>Aplicaciones de optimización</h3>
+  <img src="img/ImageOptimIcon.png" alt="" style="box-shadow: none; float: left; margin-right: 5rem; width: 16rem;">
+  <ul style="margin-top: 4rem;">
+    <li><a href="https://imageoptim.com/es.html">ImgOptim</a></li>
+    <li><a href="https://pngmini.com/">ImageAlpha</a></li>
+  </ul>
+</section>
+
 
   <section>
     <h2>Enlaces relacionados:</h2>
-    <ul>
+    <ul class="related-links">
+      <li>
+        <a href="https://www.youtube.com/watch?v=k4Xkpawt1EU">“Image Compression: Putting your Images on a Diet”</a> <i>&#8213; Guy Podjarny</i>
+      </li>
+
+      <li>
+        <a href="https://vimeo.com/136324133">“The story behind lossy PNG compression”</a> <i>&#8213; Kernel Lesiński</i>
+      </li>
+
+      <li>
+        <a href="http://www.smashingmagazine.com/2009/07/clever-png-optimization-techniques/">“Clever PNG Optimization Techniques”</a> <i>&#8213; Sergey Chikuyonok</i>
+      </li>
+
+      <li>
+        <a href="http://www.smashingmagazine.com/2009/07/clever-jpeg-optimization-techniques/">“Clever JPEG Optimization Techniques”</a> <i>&#8213; Sergey Chikuyonok</i>
+      </li>
+
       <li>
         <a href="http://optipng.sourceforge.net/pngtech/optipng.html">“A guide to PNG optimization”</a>
       </li>
@@ -212,108 +312,9 @@
 
 <section>
   <section>
-    <h1>Tipos de compresión</h1>
-  </section>
-
-  <section>
-    <h2>Lossy Compression</h2>
-    <p>Es un tipo de compresión que ocasiona perdida de información durante el proceso.</p>
-    <p>La información perdida <b>no</b> se recupera cuando el cliente descomprime la imágen para representarla, por lo que es importante evaluar el ratio peso/calidad que queremos para como resultado final.</p>
-  </section>
-
-  <section>
-    <h3>Ejemplo de lossy compression</h3>
-    <table style="font-size: .8em;">
-      <tr>
-        <th>Antes</th>
-        <th style="border-left: 1px dotted rgba(0, 0, 0, .3); width: 50%;">Después</th>
-      </tr>
-      <tr>
-        <td>0.123, 1.2345, 21.2165, 12.123</td>
-        <td style="border-left: 1px dotted rgba(0, 0, 0, .3)">0,0,20,10</td>
-      </tr>
-    </table>
-  </section>
-
-  <section>
-    <h2>Lossless Compression</h2>
-    <p>Este tipo de compresión consigue a base de diferentes algoritmos reducir el peso de los ficheros sin perder información.</p>
-    <p>La redución de tamaño no suele ser tan drástica como la de una compresión lossy pero la imágen se descomprime intacta.</p>
-  </section>
-
-  <section>
-    <h3>Ejemplo de lossy compression</h3>
-    <table style="font-size: .8em;">
-      <tr>
-        <th>Antes</th>
-        <th style="border-left: 1px dotted rgba(0, 0, 0, .3); width: 50%;">Después</th>
-      </tr>
-      <tr>
-        <td>aaaaabbbbbcccddddeeeeffffaaaaabb</td>
-        <td style="border-left: 1px dotted rgba(0, 0, 0, .3)">a5b4c2d4e4f4a5bb0</td>
-      </tr>
-    </table>
-  </section>
-
-  <section>
-    <h2>Enlaces relacionados:</h2>
-    <ul>
-      <li>
-        <a href="https://www.youtube.com/watch?v=k4Xkpawt1EU">“Image Compression: Putting your Images on a Diet”</a> - <i>Guy Podjarny</i>
-      </li>
-  </section>
-</section>
-
-
-<section>
-  <section>
-    <h1>Optimización manual</h1>
-  </section>
-
-  <section>
-    <h3>Guardar para web en Photoshop</h3>
-    <p style="text-align:center;">
-      <img src="img/photoshop.png" alt="" style="height: 75vh;">
-    </p>
-
-  </section>
-
-  <section>
-    <ol>
-      <li>Elegir el formato adecuado</li>
-      <li>JPG: Elegir el nivel de compresion (75-70 óptimo)</li>
-      <li>PNG: Limitar la paleta de colores</li>
-      <li>Opcional: Activar la opción de descarga progresiva (JPG) / entrelazada (PNG)</li>
-      <li>Quitar la metadata (sino la necesitamos)</li>
-    </ol>
-
-    <aside class="notes">
-      <p>La descarga entrelazada / progresiva aumenta el peso del fichero aunque el usuario perciba una mejora en la performance </p>
-    </aside>
-  </section>
-
-  <section>
-    <h3>Aplicaciones de optimización</h3>
-    <ul>
-      <li><a href="https://imageoptim.com/es.html">ImgOptim</a></li>
-      <li><a href="https://pngmini.com/">ImageAlpha</a></li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Enlaces relacionados:</h2>
-    <ul>
-      <li>
-        <a href="">“”</a> - <i></i>
-      </li>
-  </section>
-</section>
-
-
-<section>
-  <section>
     <h1>Vectores</h1>
   </section>
+
   <section>
     <h2>SVG (2001)</h2>
 
@@ -338,6 +339,85 @@
       <li><strong>Malos para: </strong> Fotografías</li>
     </ul>
   </section>
+
+  <section>
+    <h3>Utilizando SVG</h3>
+    <p class="fz-s" style="margin-bottom: .5rem;">Como <a href="http://caniuse.com/#feat=svg-img"><code>&#060;img&#062;</code></a>:</p>
+    <pre style="margin-top: 0;"><code class="hljs html" style="padding: .75rem;" data-trim>
+  <img src="twitter.svg" alt="Twitter">
+    </code></pre>
+
+    <p class="fz-s" style="margin-bottom: .5rem;">Como <a href="http://caniuse.com/#feat=svg-css">CSS background</a>:</p>
+    <pre style="margin-top: 0;"><code class="hljs css" style="padding: .75rem;" data-trim>
+  .icon-twitter { background-image: url(twitter.svg); }
+    </code></pre>
+
+    <p class="fz-s" style="margin-bottom: .5rem;">Como <a href="http://caniuse.com/#feat=svg-html5">SVG inline</a>:</p>
+    <pre style="margin-top: 0;"><code class="hljs html" style="padding: .75rem;" data-trim>
+&#60;div&#62;
+  &#60;svg xmlns="http://www.w3.org/2000/svg"
+       width="78" height="78" viewBox="0 0 78 78"&#62;
+    &#60;path fill="#0E7983" d="M77 15.2c-2.7 1.2-5.9 2.1-9 2.5 3.1-1.9 5.7-5
+      6.9-8.5-2.9 1.9-6.3 3.1-9.8 3.7-2.9-3.1-6.9-5-11.3-5-8.6 0-15.5 6.8-15.5
+      15.3 0 1.2.2 2.3.4 3.5-13.2-.5-24.5-6.7-32.3-16-1.3 2.3-2.1 5-2.1 7.6 0
+      5.4 2.7 10.1 6.9 12.8-2.5 0-5-.8-7.1-1.9v.2c0 7.4 5.4 13.7 12.6 15.1-
+      1.3.4-2.7.6-4.2.6-1 0-1.9 0-2.9-.2 1.9 6.2 7.7 10.5 14.5 10.7-5.2
+      4.1-12.2 6.6-19.3 6.6-1.3 0-2.5 0-3.8-.2 6.9 4.5 15.1 7 23.9 7 28.7
+      0 44.4-23.4 44.4-43.8v-2.1c3.1-2.1 5.6-4.8 7.7-7.9z"/&#62;
+  &#60;/svg&#62;
+&#60;/div&#62;
+    </code></pre>
+  </section>
+
+  <section>
+    <h3>Guardar SVG desde Illustrator</h3>
+    <p style="text-align:center;">
+      <img src="img/svg-options-panel-01.png" alt="" style="height: 36vh;">
+    </p>
+
+    <ul style="font-size: 1.5rem; margin: 0;">
+      <li style="margin-bottom: 1rem;"><strong>SVG Profiles: SVG 1.1</strong> - Es una versión con <a href="http://caniuse.com/#feat=svg">buen soporte</a>. Versiones anteriores no soportan algunas características como la transparencia.</li>
+      <li style="margin-bottom: 1rem;"><strong>Fonts Type: SVG</strong> - También podemos trazar el texto a outlines.</li>
+      <li style="margin-bottom: 1rem;"><strong>Subsetting: None (Use System Fonts)</strong> - Esta opción utilizará las fuentes del sistema ya que las fuentes SVG tienen problemas en algunos navegadores (FF & IE).</li>
+      <li style="margin-bottom: 1rem;"><strong>Images: Link</strong> - De esta manera mantendremos control sobre la compresión de los bitmap, aunque tendremos que cambiar la ruta a mano ya que Illustrator la apuntará a nuestro disco.</li>
+    </ul>
+
+    <aside class="notes">
+      <p>No hay demasiada diferencia de peso entre embeber la fuente y trazarla.</p>
+    </aside>
+  </section>
+
+  <section>
+    <p style="text-align:center; margin: 0;">
+      <img src="img/svg-options-panel-02.png" alt="" style="height: 45vh;">
+    </p>
+
+    <ul style="font-size: 1.5rem; margin: 0;">
+      <li style="margin-bottom: 1rem;"><strong>Uncheck 'Preserve Illustrator Editing Capabilities'</strong>.</li>
+      <li style="margin-bottom: 1rem;"><strong>Decimal places: 1</strong> - Define los decimales que definen cada punto. Reducir el valor por defecto de 3 a 1 <a href="http://creativedroplets.com/samples/svg/decimal/_EdgeReflow%20napoleon%20decimal_preview.html">no produce ningun cambio visual</a> pero reduce el tamaño del archivo considerablemente.</li>
+      <li style="margin-bottom: 1rem;"><strong>CSS Properties: Style Elements</strong> - Esta opción colocará los estilos dentro de un tag <code>&#060;style&#062;</code> al comienzo del svg.</li>
+      <li style="margin-bottom: 1rem;">El resto de las opciones las dejaremos como vienen por defecto.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Enlaces relacionados:</h2>
+    <ul class="related-links">
+      <li>
+        <a href="https://css-tricks.com/mega-list-svg-information/">“A Compendium of SVG Information”</a> <i>&#8213; Chris Coyier</i>
+      </li>
+
+      <li>
+        <a href="http://sarasoueidan.com/blog/svg-coordinate-systems/">“Understanding SVG Coordinate Systems and Transformation”</a> <i>&#8213; Sara Soueidan</i>
+      </li>
+      <li>
+        <a href="https://www.filamentgroup.com/lab/grumpicon-workflow.html">“A Designer’s Guide to Grumpicon, or: How I Learned to Stop Using Font Icons and Love SVGs”</a>
+      </li>
+
+      <li>
+        <a href="http://creativedroplets.com/export-svg-for-the-web-with-illustrator-cc/">“Export SVG for the web with Illustrator CC”</a> <i>&#8213; Michael Chaize</i>
+      </li>
+  </section>
 </section>
 
 
@@ -356,7 +436,7 @@
     <h3>Sprites por imágen</h3>
     <div style="display: flex;">
       <div style="flex-grow: 1;">
-        <pre><code>
+        <pre><code class="hljs css">
     .icon {
       background-image: url('img/sprite.png');
       background-repeat: no-repeat;
@@ -381,7 +461,7 @@
   <section>
     <h3>Sprites por css</h3>
 
-    <pre><code>
+    <pre><code class="hljs css">
     [class^=icon-] {
       background-repeat: no-repeat;
     }
@@ -403,10 +483,57 @@
   </section>
 
   <section>
+    <h3>Sprites SVG mediante <code>&#060;symbol&#062;</code></h3>
+
+    <p class="fz-s" style="margin-bottom: .5rem;">Definición del SVG:</p>
+    <pre style="margin: 0;"><code class="hljs html" style="padding: 0.75rem 1rem" data-trim>
+&#060;svg xmlns="http://www.w3.org/2000/svg" style="display: none;"&#062;
+  &#060;symbol id="icon-twitter" viewBox="214.7 0 182.6 792"&#062;
+    &#060;!-- contenido del svg --&#062;
+  &#060;/symbol&#062;
+  &#060;symbol id="icon-facebook" viewBox="0 26 100 48"&#062;
+    &#060;!-- contenido del svg --&#062;
+  &#060;/symbol&#062;
+&#060;/svg&#062;
+    </code></pre>
+
+    <p class="fz-s" style="margin-bottom: .5rem;">Uso con el svg inline en el HTML:</p>
+    <pre style="margin: 0;"><code class="hljs html" style="padding: 0.75rem 1rem" data-trim>
+&#060;svg class="twitter-icon"&#062;
+  &#060;use xlink:href="#icon-twitter"&#062;&#060;/use&#062;
+&#060;svg&#062;
+    </code></pre>
+
+    <p class="fz-s" style="margin-bottom: .5rem;">Uso con el svg en un archivo externo:</p>
+    <pre style="margin: 0;"><code class="hljs html" style="padding: 0.75rem 1rem" data-trim>
+&#060;svg class="twitter-icon"&#062;
+  &#060;use xlink:href="ruta/externa/icons.svg#icon-twitter"&#062;&#060;/use&#062;
+&#060;svg&#062;
+    </code></pre>
+
+    <aside class="notes">
+      <p>Si lo usamos inline en el HTML no cachea</p>
+      <p>Lo podemos referenciar externo pero necesitamos fallback para IE9+ (svg4everybody)</p>
+    </aside>
+  </section>
+
+  <section>
     <h2>Enlaces relacionados:</h2>
-    <ul>
+    <ul class="related-links">
       <li>
-        <a href="http://sixrevisions.com/css/css-sprites-site-speed/">“Saving Bandwidth and Improving Site Speed Using CSS Sprites”</a> - <i>Peter Richards</i>
+        <a href="https://css-tricks.com/css-sprites/">“CSS Sprites: What They Are, Why They’re Cool, and How To Use Them”</a> <i>&#8213; Chris Coyier</i>
+      </li>
+
+      <li>
+        <a href="https://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/">“An Overview of SVG Sprite Creation Techniques”</a> <i>&#8213; Sara Soueidan</i>
+      </li>
+
+      <li>
+        <a href="https://css-tricks.com/svg-fragment-identifiers-work/">“How SVG Fragment Identifiers Work”</a> <i>&#8213; Chris Coyier</i>
+      </li>
+
+      <li>
+        <a href="https://icomoon.io/app/">IcoMoon App</a>
       </li>
   </section>
 </section>
