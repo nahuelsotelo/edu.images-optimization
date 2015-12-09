@@ -6,10 +6,9 @@ var imageOptim = require('gulp-imageoptim');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var svgmin = require('gulp-svgmin');
-// var svgSprite = require('gulp-svg-sprite');
+var svgSprite = require('gulp-svg-sprite');
 var svg2png = require('gulp-svg2png');
 var webp = require('gulp-webp');
-// var sprite = require('gulp-sprite');
 
 var path = {
   src: 'source',
@@ -21,7 +20,8 @@ var path = {
 
 gulp.task('clean', function(callback) {
   return del([
-    path.dist
+    path.dist,
+    path.sprite
     ], function(err, deletedFiles) {
     console.log('Files deleted:\n'.bold.green , deletedFiles.join(',\n '));
     callback();
@@ -73,7 +73,7 @@ gulp.task('webp', ['img-source'], function () {
 });
 
 gulp.task('svg-sprite', function () {
-  return gulp.src( path.sprite + '/svg/*.svg' )
+  return gulp.src( path.src + '/svg/*.svg' )
     .pipe(svgSprite({
       dest: path.spriteDist,
       mode: {
@@ -83,13 +83,11 @@ gulp.task('svg-sprite', function () {
         }
       }
     }))
-    .pipe(gulp.dest( path.dist + '/sprite' ));
+    .pipe(gulp.dest( path.sprite ));
 });
 
-gulp.task('png-sprites', function () {
-  gulp.src(path.sprite + '/png/*.png')
-    .pipe(sprite('sprites.png', {
-      imagePath: path.dist + '/sprite-png',
-    }))
-    .pipe(gulp.dest( path.dist + '/sprite-png' ));
+gulp.task('svg-to-png', function () {
+  return gulp.src( path.src + '/svg/*.svg' )
+    .pipe(svg2png())
+    .pipe(gulp.dest( path.sprite + '/png' ));
 });
