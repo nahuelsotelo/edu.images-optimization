@@ -507,107 +507,6 @@ var RevealMath = window.RevealMath || (function(){
 
 })();
 
-(function() {
-	var multiplex = Reveal.getConfig().multiplex;
-	var socketId = multiplex.id;
-	var socket = io.connect(multiplex.url);
-
-	socket.on(multiplex.id, function(data) {
-		// ignore data from sockets that aren't ours
-		if (data.socketId !== socketId) { return; }
-		if( window.location.host === 'localhost:1947' ) return;
-
-		Reveal.setState(data.state);
-	});
-}());
-
-var http        = require('http');
-var express		= require('express');
-var fs			= require('fs');
-var io			= require('socket.io');
-var crypto		= require('crypto');
-
-var app       	= express();
-var staticDir 	= express.static;
-var server    	= http.createServer(app);
-
-io = io(server);
-
-var opts = {
-	port: process.env.PORT || 1948,
-	baseDir : __dirname + '/../../'
-};
-
-io.on( 'connection', function( socket ) {
-	socket.on('multiplex-statechanged', function(data) {
-		if (typeof data.secret == 'undefined' || data.secret == null || data.secret === '') return;
-		if (createHash(data.secret) === data.socketId) {
-			data.secret = null;
-			socket.broadcast.emit(data.socketId, data);
-		};
-	});
-});
-
-[ 'css', 'js', 'plugin', 'lib' ].forEach(function(dir) {
-	app.use('/' + dir, staticDir(opts.baseDir + dir));
-});
-
-app.get("/", function(req, res) {
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	fs.createReadStream(opts.baseDir + '/index.html').pipe(res);
-});
-
-app.get("/token", function(req,res) {
-	var ts = new Date().getTime();
-	var rand = Math.floor(Math.random()*9999999);
-	var secret = ts.toString() + rand.toString();
-	res.send({secret: secret, socketId: createHash(secret)});
-});
-
-var createHash = function(secret) {
-	var cipher = crypto.createCipher('blowfish', secret);
-	return(cipher.final('hex'));
-};
-
-// Actually listen
-server.listen( opts.port || null );
-
-var brown = '\033[33m',
-	green = '\033[32m',
-	reset = '\033[0m';
-
-console.log( brown + "reveal.js:" + reset + " Multiplex running on port " + green + opts.port + reset );
-(function() {
-
-	// Don't emit events from inside of notes windows
-	if ( window.location.search.match( /receiver/gi ) ) { return; }
-
-	var multiplex = Reveal.getConfig().multiplex;
-
-	var socket = io.connect( multiplex.url );
-
-	function post() {
-
-		var messageData = {
-			state: Reveal.getState(),
-			secret: multiplex.secret,
-			socketId: multiplex.id
-		};
-
-		socket.emit( 'multiplex-statechanged', messageData );
-
-	};
-
-	// Monitor events that trigger a change in state
-	Reveal.addEventListener( 'slidechanged', post );
-	Reveal.addEventListener( 'fragmentshown', post );
-	Reveal.addEventListener( 'fragmenthidden', post );
-	Reveal.addEventListener( 'overviewhidden', post );
-	Reveal.addEventListener( 'overviewshown', post );
-	Reveal.addEventListener( 'paused', post );
-	Reveal.addEventListener( 'resumed', post );
-
-}());
 /**
  * Handles opening of and synchronization with the reveal.js
  * notes window.
@@ -735,55 +634,6 @@ var RevealNotes = (function() {
 	return { open: openNotes };
 
 })();
-
-/**
- * phantomjs script for printing presentations to PDF.
- *
- * Example:
- * phantomjs print-pdf.js "http://lab.hakim.se/reveal-js?print-pdf" reveal-demo.pdf
- *
- * By Manuel Bieh (https://github.com/manuelbieh)
- */
-
-// html2pdf.js
-var page = new WebPage();
-var system = require( 'system' );
-
-var slideWidth = system.args[3] ? system.args[3].split( 'x' )[0] : 960;
-var slideHeight = system.args[3] ? system.args[3].split( 'x' )[1] : 700;
-
-page.viewportSize = {
-	width: slideWidth,
-	height: slideHeight
-};
-
-// TODO
-// Something is wrong with these config values. An input
-// paper width of 1920px actually results in a 756px wide
-// PDF.
-page.paperSize = {
-	width: Math.round( slideWidth * 2 ),
-	height: Math.round( slideHeight * 2 ),
-	border: 0
-};
-
-var inputFile = system.args[1] || 'index.html?print-pdf';
-var outputFile = system.args[2] || 'slides.pdf';
-
-if( outputFile.match( /\.pdf$/gi ) === null ) {
-	outputFile += '.pdf';
-}
-
-console.log( 'Printing PDF (Paper size: '+ page.paperSize.width + 'x' + page.paperSize.height +')' );
-
-page.open( inputFile, function( status ) {
-	window.setTimeout( function() {
-		console.log( 'Printed succesfully' );
-		page.render( outputFile );
-		phantom.exit();
-	}, 1000 );
-} );
-
 
 (function() {
 
@@ -919,6 +769,55 @@ console.log( brown + 'reveal.js - Speaker Notes' + reset );
 console.log( '1. Open the slides at ' + green + slidesLocation + reset );
 console.log( '2. Click on the link your JS console to go to the notes page' );
 console.log( '3. Advance through your slides and your notes will advance automatically' );
+
+/**
+ * phantomjs script for printing presentations to PDF.
+ *
+ * Example:
+ * phantomjs print-pdf.js "http://lab.hakim.se/reveal-js?print-pdf" reveal-demo.pdf
+ *
+ * By Manuel Bieh (https://github.com/manuelbieh)
+ */
+
+// html2pdf.js
+var page = new WebPage();
+var system = require( 'system' );
+
+var slideWidth = system.args[3] ? system.args[3].split( 'x' )[0] : 960;
+var slideHeight = system.args[3] ? system.args[3].split( 'x' )[1] : 700;
+
+page.viewportSize = {
+	width: slideWidth,
+	height: slideHeight
+};
+
+// TODO
+// Something is wrong with these config values. An input
+// paper width of 1920px actually results in a 756px wide
+// PDF.
+page.paperSize = {
+	width: Math.round( slideWidth * 2 ),
+	height: Math.round( slideHeight * 2 ),
+	border: 0
+};
+
+var inputFile = system.args[1] || 'index.html?print-pdf';
+var outputFile = system.args[2] || 'slides.pdf';
+
+if( outputFile.match( /\.pdf$/gi ) === null ) {
+	outputFile += '.pdf';
+}
+
+console.log( 'Printing PDF (Paper size: '+ page.paperSize.width + 'x' + page.paperSize.height +')' );
+
+page.open( inputFile, function( status ) {
+	window.setTimeout( function() {
+		console.log( 'Printed succesfully' );
+		page.render( outputFile );
+		phantom.exit();
+	}, 1000 );
+} );
+
 
 /*
  * Handles finding a text string anywhere in the slides and showing the next occurrence to the user
@@ -1117,6 +1016,107 @@ function Hilitor(id, tag)
 	return { open: openSearch };
 })();
 
+(function() {
+	var multiplex = Reveal.getConfig().multiplex;
+	var socketId = multiplex.id;
+	var socket = io.connect(multiplex.url);
+
+	socket.on(multiplex.id, function(data) {
+		// ignore data from sockets that aren't ours
+		if (data.socketId !== socketId) { return; }
+		if( window.location.host === 'localhost:1947' ) return;
+
+		Reveal.setState(data.state);
+	});
+}());
+
+var http        = require('http');
+var express		= require('express');
+var fs			= require('fs');
+var io			= require('socket.io');
+var crypto		= require('crypto');
+
+var app       	= express();
+var staticDir 	= express.static;
+var server    	= http.createServer(app);
+
+io = io(server);
+
+var opts = {
+	port: process.env.PORT || 1948,
+	baseDir : __dirname + '/../../'
+};
+
+io.on( 'connection', function( socket ) {
+	socket.on('multiplex-statechanged', function(data) {
+		if (typeof data.secret == 'undefined' || data.secret == null || data.secret === '') return;
+		if (createHash(data.secret) === data.socketId) {
+			data.secret = null;
+			socket.broadcast.emit(data.socketId, data);
+		};
+	});
+});
+
+[ 'css', 'js', 'plugin', 'lib' ].forEach(function(dir) {
+	app.use('/' + dir, staticDir(opts.baseDir + dir));
+});
+
+app.get("/", function(req, res) {
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	fs.createReadStream(opts.baseDir + '/index.html').pipe(res);
+});
+
+app.get("/token", function(req,res) {
+	var ts = new Date().getTime();
+	var rand = Math.floor(Math.random()*9999999);
+	var secret = ts.toString() + rand.toString();
+	res.send({secret: secret, socketId: createHash(secret)});
+});
+
+var createHash = function(secret) {
+	var cipher = crypto.createCipher('blowfish', secret);
+	return(cipher.final('hex'));
+};
+
+// Actually listen
+server.listen( opts.port || null );
+
+var brown = '\033[33m',
+	green = '\033[32m',
+	reset = '\033[0m';
+
+console.log( brown + "reveal.js:" + reset + " Multiplex running on port " + green + opts.port + reset );
+(function() {
+
+	// Don't emit events from inside of notes windows
+	if ( window.location.search.match( /receiver/gi ) ) { return; }
+
+	var multiplex = Reveal.getConfig().multiplex;
+
+	var socket = io.connect( multiplex.url );
+
+	function post() {
+
+		var messageData = {
+			state: Reveal.getState(),
+			secret: multiplex.secret,
+			socketId: multiplex.id
+		};
+
+		socket.emit( 'multiplex-statechanged', messageData );
+
+	};
+
+	// Monitor events that trigger a change in state
+	Reveal.addEventListener( 'slidechanged', post );
+	Reveal.addEventListener( 'fragmentshown', post );
+	Reveal.addEventListener( 'fragmenthidden', post );
+	Reveal.addEventListener( 'overviewhidden', post );
+	Reveal.addEventListener( 'overviewshown', post );
+	Reveal.addEventListener( 'paused', post );
+	Reveal.addEventListener( 'resumed', post );
+
+}());
 // Custom reveal.js integration
 (function(){
 	var isEnabled = true;
