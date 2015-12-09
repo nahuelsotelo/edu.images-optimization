@@ -47,23 +47,27 @@
   <p style="text-align: center;">Frontend developer en <a href="http://www.schibsted.es/">Schibsted Spain</a> y Profesor de la asignatura Programación Frontend en el Master de <a href="http://www.baued.es/es/estudios/masters-y-posgrados/master-en-diseno-web">Diseño Web de Bau</a>.</p>
 
   <ul class="social">
-    <li><a href="https://github.com/nahuelsotelo" class="is--github">Github</a></li>
-    <li><a href="https://es.linkedin.com/in/nahuelsotelo" class="is--linkedin">Linkedin</a></li>
-    <li><a href="https://twitter.com/nahuelsotelo" class="is--twitter">Twitter</a></li>
+    <li><a href="https://github.com/nahuelsotelo" class="is--github">nahuelsotelo</a></li>
+    <li><a href="https://es.linkedin.com/in/nahuelsotelo" class="is--linkedin">Nahuel Sotelo</a></li>
+    <li><a href="https://twitter.com/nahuelsotelo" class="is--twitter">@nahuelsotelo</a></li>
   </ul>
 </section>
 
 <section>
   <h2>Contenidos</h2>
   <ol>
-    <li>Introducción (coste de las imágenes)</li>
-    <li>Bitmap</li>
-    <li>Tipos de compresión</li>
-    <li>Optimización manual</li>
+    <li>Introducción</li>
+    <li>
+      Bitmap
+      <ul>
+        <li>Tipos de compresión</li>
+        <li>Formatos bitmap</li>
+        <li>Optimización manual</li>
+      </ul>
+    </li>
+    <li>SVG</li>
     <li>Sprites</li>
     <li>Optimización automática</li>
-    <li>SVG</li>
-    <li>SVG aplicacion</li>
     <li>Nuevos formatos de imágen</li>
   </ol>
 </section>
@@ -182,10 +186,9 @@
 <section>
   <h3>GIF (1987)</h3>
   <figure>
-    <img src="img/robocop.gif" alt="" style="height: 60vh">
+    <img src="img/robocop.gif" alt="" style="height: 24rem;">
     <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=zbCbwP6ibR4">Robocop</a> (1987)</figcaption>
   </figure>
-
 </section>
 
 <section>
@@ -205,7 +208,7 @@
 <section>
   <h3>JPG (1992)</h3>
   <figure>
-    <img src="img/ash.jpg" alt="" style="height: 60vh">
+    <img src="img/ash.jpg" alt="" style="height: 24rem;">
     <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=Y_51HrX_LB0">Army of Darkness</a> (1992)</figcaption>
   </figure>
 </section>
@@ -227,7 +230,7 @@
 <section>
   <h3>PNG (1996)</h3>
   <figure>
-    <img src="img/trainspotting.png" alt="" style="height: 60vh">
+    <img src="img/trainspotting.png" alt="" style="height: 24rem;">
     <figcaption class="fz-s"><a href="https://www.youtube.com/watch?v=8LuxOYIpu-I">Trainspotting</a> (1996)</figcaption>
   </figure>
 </section>
@@ -255,7 +258,7 @@
 <section>
   <h3>Guardar para web en Photoshop</h3>
   <p style="text-align:center;">
-    <img src="img/photoshop.png" alt="" style="height: 75vh;">
+    <img src="img/photoshop.png" alt="" style="height: 32rem;">
   </p>
 </section>
 
@@ -372,7 +375,7 @@
   <section>
     <h3>Guardar SVG desde Illustrator</h3>
     <p style="text-align:center;">
-      <img src="img/svg-options-panel-01.png" alt="" style="height: 36vh;">
+      <img src="img/svg-options-panel-01.png" alt="" style="height: 16rem;">
     </p>
 
     <ul style="font-size: 1.5rem; margin: 0;">
@@ -389,7 +392,7 @@
 
   <section>
     <p style="text-align:center; margin: 0;">
-      <img src="img/svg-options-panel-02.png" alt="" style="height: 45vh;">
+      <img src="img/svg-options-panel-02.png" alt="" style="height: 22rem;">
     </p>
 
     <ul style="font-size: 1.5rem; margin: 0;">
@@ -430,6 +433,8 @@
     <p>La técnica de <i lang="en">sprites</i> proviene de la industria del videojuego y consiste en combinar diferentes imágenes en una sóla para luego acceder solo al fragmento de imágen que necesitamos en cada caso.</p>
 
     <p>En web, esto nos permite tener una sola llamada al servidor en lugar de una por cada imágen.</p>
+
+    <p style="text-align: center;"><img src="./img/sprite-megaman.png" alt="" style="box-shadow: none;"></p>
   </section>
 
   <section>
@@ -453,7 +458,7 @@
     </div>
 
     <div style="flex-shrink: 0; order: -1; margin-right: 2rem;">
-      <img src="img/sprite.png" alt="" style=" border: 1px solid rgba(0,0,0,.2); box-shadow: none; padding: 1rem; height: 60vh;">
+      <img src="img/sprite.png" alt="" style=" border: 1px solid rgba(0,0,0,.2); box-shadow: none; padding: 1rem; height: 30rem;">
     </div>
     </div>
   </section>
@@ -576,10 +581,10 @@
     <h2>SVG</h2>
     <ul>
       <li>
-        Svgo
+        <a href="https://github.com/svg/svgo">Svgo</a>
         <ul>
-          <li>grunt-svgmin</li>
-          <li>gulp-svgmin</li>
+          <li><a href="https://github.com/ben-eb/gulp-svgmin">grunt-svgmin</a></li>
+          <li><a href="https://github.com/sindresorhus/grunt-svgmin">gulp-svgmin</a></li>
         </ul>
       </li>
     </ul>
@@ -588,14 +593,13 @@
   <section>
     <h2>Sprites</h2>
     <ul>
+      <li><a href="https://github.com/jkphl/gulp-svg-sprite">gulp-svg-sprite</a></li>
+      <li><a href="https://github.com/akoenig/gulp-svg2png">gulp-svg2png</a></li>
       <li>
         <a href="http://www.grumpicon.com/">Grumpicon</a>
         <ul>
           <li>
             <a href="http://www.grunticon.com/">Grunticon</a>
-          </li>
-          <li>
-            <a href="https://github.com/filamentgroup/gulpicon">Gulpicon</a>
           </li>
         </ul>
       </li>
@@ -620,6 +624,108 @@
 </section>
 
 
+<section>
+  <section>
+    <h1>Nuevos Formatos de Imágenes</h1>
+  </section>
+
+  <section>
+    <h2>WEBP</h2>
+    <figure>
+      <img src="img/webp.png" alt="" style="height: 30rem">
+      <figcaption class="fz-s"><a href=""></a></figcaption>
+    </figure>
+  </section>
+
+
+  <section>
+    <ul>
+      <li>Creado e impulsado por Google</li>
+      <li>Compresión <i>Lossless</i> y <i>Lossy</i></li>
+      <li>Alpha Channel</li>
+      <li>Animación?</li>
+    </ul>
+    <hr>
+    <ul>
+      <li><strong>Contras:</strong>
+        <ul>
+          <li><a href="">Escaso soporte en navegadores</a> (excepto Chrome y Opera).</li>
+          <li>En compresiones altas puede dar un efecto de posterizado.</li>
+        </ul>
+      </li>
+    </ul>
+
+  </section>
+
+  <section>
+    <h2>BPG (1987) <small style="display: block;">(Better Portable Graphics)</small></h2>
+
+    <figure>
+      <img src="img/bpg.png" alt="" style="height: 30rem">
+    </figure>
+  </section>
+
+  <section>
+    <ul>
+      <li>Es Open Source y no tiene ninguna compañía grande detrás</li>
+      <li>Está basado en el standard de compresión de video HEVC (antes conocido como H.265)</li>
+      <li>Compresión <i>Lossless</i> y <i>Lossy</i></li>
+      <li>Alpha Channel</li>
+      <li>Animación</li>
+    </ul>
+    <hr>
+    <ul>
+      <li><strong>Pros:</strong> Tiene soporte en todos los browser con un decodificador por js (56kb gzip).</li>
+      <li><strong>Contras:</strong> Pocas herramientas para compilarlo y renderizado es lento.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Enlaces relacionados:</h2>
+    <ul class="related-links">
+      <li>
+        <a href="http://xooyoozoo.github.io/yolo-octo-bugfixes/">Comparativa de diferentes formatos</a></i>
+      </li>
+
+      <li>
+        <a href="https://developers.google.com/speed/webp">“A new image format for the Web”</a>
+      </li>
+
+      <li>
+        <a href="http://www.smashingmagazine.com/2015/10/webp-images-and-performance/">“Guide To Using WebP Images Today: A Case Study”</a> <i>&#8213; Adrian James & Matt Shull</i>
+      </li>
+
+      <li>
+        <a href="http://blog.jpegmini.com/5-reasons-why-bpg-will-eventually-replace-jpeg/">“5 Reasons Why BPG Will Eventually Replace JPEG”</a> <i>&#8213; Dror Gill</i>
+      </li>
+
+      <li>
+        <a href="https://eek.ro/why-bpg-will-replace-gifs-and-not-only/">“Why BPG will replace GIFs and not only”</a> <i>&#8213; Radu-Sebastian Amarie</i>
+      </li>
+
+      <li>
+        <a href="http://bellard.org/bpg/">BPG’s official Page</a>
+      </li>
+    </ul>
+  </section>
+
+</section>
+
+
+<!-- http://blog.jpegmini.com/5-reasons-why-bpg-will-eventually-replace-jpeg/ -->
+
+
+
+<section>
+  <h2 style="text-align: center;">¡Gracias!</strong></h2>
+  <p style="text-align: center;">Preguntas, dudas, comentarios a <a href="mailto:hola@nahuelsotelo.com" style="display: block;">hola@nahuelsotelo.com</a></p>
+
+  <ul class="social">
+    <li><a href="https://github.com/nahuelsotelo" class="is--github">nahuelsotelo</a></li>
+    <li><a href="https://es.linkedin.com/in/nahuelsotelo" class="is--linkedin">Nahuel Sotelo</a></li>
+    <li><a href="https://twitter.com/nahuelsotelo" class="is--twitter">@nahuelsotelo</a></li>
+  </ul>
+</section>
 
 
     </div>

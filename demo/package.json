@@ -1,0 +1,24 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "colors": "^1.1.2",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-imageoptim": "^0.3.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-svg-sprite": "^1.2.16",
+    "gulp-svg2png": "^0.3.0",
+    "gulp-svgmin": "^1.2.0",
+    "gulp-webp": "^2.3.0",
+    "imagemin-pngquant": "^4.2.0"
+  }
+}

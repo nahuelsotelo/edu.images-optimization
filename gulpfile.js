@@ -21,15 +21,17 @@ var gulp        = require('gulp'),
 
 
 // ERROR HANDLER ========================================
-var onError = function(err) {
+  var onError = function(err) {
     beep([200, 200]);
     console.log(
-    '\n*****************'.bold.gray + ' \\(°□°)/ '.bold.red + '<( ERROR! ) '.bold.blue + '*****************\n\n'.bold.gray +
-    String(err) +
-    '\n*******************************************************\n'.bold.gray );
-    browsersync.notify(String(err), 5000);
+      '\n\n****************************************************\n'.bold.gray +
+      '*****************'.bold.gray + ' \(╯°□°)╯'.bold.red + ' ︵ '.bold.gray +'ɹoɹɹǝ '.bold.blue + '*****************'.bold.gray +
+      '\n****************************************************\n\n'.bold.gray +
+      String(err) +
+      '\n\n*******************************************************\n\n'.bold.gray );
     this.emit('end');
-};
+  };
+
 
 
 // CLEAN ================================================
