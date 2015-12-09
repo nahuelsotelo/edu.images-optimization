@@ -507,6 +507,107 @@ var RevealMath = window.RevealMath || (function(){
 
 })();
 
+(function() {
+	var multiplex = Reveal.getConfig().multiplex;
+	var socketId = multiplex.id;
+	var socket = io.connect(multiplex.url);
+
+	socket.on(multiplex.id, function(data) {
+		// ignore data from sockets that aren't ours
+		if (data.socketId !== socketId) { return; }
+		if( window.location.host === 'localhost:1947' ) return;
+
+		Reveal.setState(data.state);
+	});
+}());
+
+var http        = require('http');
+var express		= require('express');
+var fs			= require('fs');
+var io			= require('socket.io');
+var crypto		= require('crypto');
+
+var app       	= express();
+var staticDir 	= express.static;
+var server    	= http.createServer(app);
+
+io = io(server);
+
+var opts = {
+	port: process.env.PORT || 1948,
+	baseDir : __dirname + '/../../'
+};
+
+io.on( 'connection', function( socket ) {
+	socket.on('multiplex-statechanged', function(data) {
+		if (typeof data.secret == 'undefined' || data.secret == null || data.secret === '') return;
+		if (createHash(data.secret) === data.socketId) {
+			data.secret = null;
+			socket.broadcast.emit(data.socketId, data);
+		};
+	});
+});
+
+[ 'css', 'js', 'plugin', 'lib' ].forEach(function(dir) {
+	app.use('/' + dir, staticDir(opts.baseDir + dir));
+});
+
+app.get("/", function(req, res) {
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	fs.createReadStream(opts.baseDir + '/index.html').pipe(res);
+});
+
+app.get("/token", function(req,res) {
+	var ts = new Date().getTime();
+	var rand = Math.floor(Math.random()*9999999);
+	var secret = ts.toString() + rand.toString();
+	res.send({secret: secret, socketId: createHash(secret)});
+});
+
+var createHash = function(secret) {
+	var cipher = crypto.createCipher('blowfish', secret);
+	return(cipher.final('hex'));
+};
+
+// Actually listen
+server.listen( opts.port || null );
+
+var brown = '\033[33m',
+	green = '\033[32m',
+	reset = '\033[0m';
+
+console.log( brown + "reveal.js:" + reset + " Multiplex running on port " + green + opts.port + reset );
+(function() {
+
+	// Don't emit events from inside of notes windows
+	if ( window.location.search.match( /receiver/gi ) ) { return; }
+
+	var multiplex = Reveal.getConfig().multiplex;
+
+	var socket = io.connect( multiplex.url );
+
+	function post() {
+
+		var messageData = {
+			state: Reveal.getState(),
+			secret: multiplex.secret,
+			socketId: multiplex.id
+		};
+
+		socket.emit( 'multiplex-statechanged', messageData );
+
+	};
+
+	// Monitor events that trigger a change in state
+	Reveal.addEventListener( 'slidechanged', post );
+	Reveal.addEventListener( 'fragmentshown', post );
+	Reveal.addEventListener( 'fragmenthidden', post );
+	Reveal.addEventListener( 'overviewhidden', post );
+	Reveal.addEventListener( 'overviewshown', post );
+	Reveal.addEventListener( 'paused', post );
+	Reveal.addEventListener( 'resumed', post );
+
+}());
 /**
  * Handles opening of and synchronization with the reveal.js
  * notes window.
@@ -1016,107 +1117,6 @@ function Hilitor(id, tag)
 	return { open: openSearch };
 })();
 
-(function() {
-	var multiplex = Reveal.getConfig().multiplex;
-	var socketId = multiplex.id;
-	var socket = io.connect(multiplex.url);
-
-	socket.on(multiplex.id, function(data) {
-		// ignore data from sockets that aren't ours
-		if (data.socketId !== socketId) { return; }
-		if( window.location.host === 'localhost:1947' ) return;
-
-		Reveal.setState(data.state);
-	});
-}());
-
-var http        = require('http');
-var express		= require('express');
-var fs			= require('fs');
-var io			= require('socket.io');
-var crypto		= require('crypto');
-
-var app       	= express();
-var staticDir 	= express.static;
-var server    	= http.createServer(app);
-
-io = io(server);
-
-var opts = {
-	port: process.env.PORT || 1948,
-	baseDir : __dirname + '/../../'
-};
-
-io.on( 'connection', function( socket ) {
-	socket.on('multiplex-statechanged', function(data) {
-		if (typeof data.secret == 'undefined' || data.secret == null || data.secret === '') return;
-		if (createHash(data.secret) === data.socketId) {
-			data.secret = null;
-			socket.broadcast.emit(data.socketId, data);
-		};
-	});
-});
-
-[ 'css', 'js', 'plugin', 'lib' ].forEach(function(dir) {
-	app.use('/' + dir, staticDir(opts.baseDir + dir));
-});
-
-app.get("/", function(req, res) {
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	fs.createReadStream(opts.baseDir + '/index.html').pipe(res);
-});
-
-app.get("/token", function(req,res) {
-	var ts = new Date().getTime();
-	var rand = Math.floor(Math.random()*9999999);
-	var secret = ts.toString() + rand.toString();
-	res.send({secret: secret, socketId: createHash(secret)});
-});
-
-var createHash = function(secret) {
-	var cipher = crypto.createCipher('blowfish', secret);
-	return(cipher.final('hex'));
-};
-
-// Actually listen
-server.listen( opts.port || null );
-
-var brown = '\033[33m',
-	green = '\033[32m',
-	reset = '\033[0m';
-
-console.log( brown + "reveal.js:" + reset + " Multiplex running on port " + green + opts.port + reset );
-(function() {
-
-	// Don't emit events from inside of notes windows
-	if ( window.location.search.match( /receiver/gi ) ) { return; }
-
-	var multiplex = Reveal.getConfig().multiplex;
-
-	var socket = io.connect( multiplex.url );
-
-	function post() {
-
-		var messageData = {
-			state: Reveal.getState(),
-			secret: multiplex.secret,
-			socketId: multiplex.id
-		};
-
-		socket.emit( 'multiplex-statechanged', messageData );
-
-	};
-
-	// Monitor events that trigger a change in state
-	Reveal.addEventListener( 'slidechanged', post );
-	Reveal.addEventListener( 'fragmentshown', post );
-	Reveal.addEventListener( 'fragmenthidden', post );
-	Reveal.addEventListener( 'overviewhidden', post );
-	Reveal.addEventListener( 'overviewshown', post );
-	Reveal.addEventListener( 'paused', post );
-	Reveal.addEventListener( 'resumed', post );
-
-}());
 // Custom reveal.js integration
 (function(){
 	var isEnabled = true;
