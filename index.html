@@ -149,7 +149,7 @@
 <section>
   <h3>Lossy Compression</h3>
   <p class="fz-m">Es un tipo de compresión que ocasiona <mark>perdida de información</mark> durante el proceso.</p>
-  <p class="fz-m">La información perdida <strong>no</strong> se recupera cuando el cliente descomprime la imágen para representarla, por lo que es importante evaluar el ratio peso/calidad que queremos para como resultado final.</p>
+  <p class="fz-m">La información perdida <strong>no</strong> se recupera cuando el cliente descomprime la imágen para representarla, por lo que es importante evaluar el ratio peso/calidad que queremos como resultado final.</p>
   <table style="font-size: .8em; margin-top: 4rem;">
     <tr>
       <th>Antes</th>
@@ -164,8 +164,8 @@
 
 <section>
   <h3>Lossless Compression</h3>
-  <p class="fz-m">Este tipo de compresión consigue a base de diferentes algoritmos reducir el peso de los ficheros <mark>sin perder información</mark>.</p>
-  <p class="fz-m">La redución de tamaño no suele ser tan drástica como la de una compresión lossy pero la imágen se descomprime intacta.</p>
+  <p class="fz-m">Este tipo de compresión consigue, a base de diferentes algoritmos, reducir el peso de los ficheros <mark>sin perder información</mark>.</p>
+  <p class="fz-m">La redución de tamaño no suele ser tan drástica como la de una compresión <i>lossy</i> pero la imágen se descomprime intacta.</p>
   <table style="font-size: .8em; margin-top: 4rem;">
     <tr>
       <th>Antes</th>
@@ -196,12 +196,12 @@
     <li>256 colores</li>
     <li>Transparencia simple (no Alpha)</li>
     <li>Animación</li>
-    <li>Compresión <b>sin</b> pérdida (Lossless)</li>
+    <li>Compresión <b>sin</b> pérdida (<i>Lossless</i>)</li>
   </ul>
   <hr>
   <ul>
-    <li><strong>Buenos para:</strong> gifs de gatos.</li>
-    <li><strong>Malos para:</strong> casi todo lo demás.</li>
+    <li><strong>Buenos para:</strong> gifs de gatos</li>
+    <li><strong>Malos para:</strong> casi todo lo demás</li>
   </ul>
 </section>
 
@@ -222,8 +222,8 @@
   </ul>
   <hr>
   <ul>
-    <li><strong>Buenos para:</strong> fotos (degradados suaves, areas de bajo contraste).</li>
-    <li><strong>Malos para</strong> logos (borders planos, areas de alto contraste).</li>
+    <li><strong>Buenos para:</strong> fotos (degradados suaves, áreas de bajo contraste)</li>
+    <li><strong>Malos para</strong> logos (bordes planos, áreas de alto contraste)</li>
   </ul>
 </section>
 
@@ -241,7 +241,7 @@
     <li>Transparencia por Canal Alpha</li>
     <li>Animación (pero sin soporte de navegadores :( )</li>
     <li>Problemas con la trasparencia en IE 6-8</li>
-    <li>Compresión <b>sin</b> pérdida (Lossless)</li>
+    <li>Compresión <b>sin</b> pérdida (<i>Lossless</i>)</li>
   </ul>
   <hr>
   <ul>
@@ -265,7 +265,7 @@
 <section>
   <ol>
     <li>Elegir el formato adecuado</li>
-    <li>Recortar la imágen al tamaño de final</li>
+    <li>Recortar la imágen a su tamaño final de uso</li>
     <li>JPG: Elegir el nivel de compresion (75-70 óptimo)</li>
     <li>PNG: Limitar la paleta de colores</li>
     <li>Opcional: Activar la opción de descarga progresiva (JPG) / entrelazada (PNG)</li>
@@ -329,16 +329,16 @@
 
   <section>
     <ul>
-      <li>Gráficos vectoriales en formato XML.</li>
+      <li>Gráficos vectoriales en formato XML</li>
       <li>Poco peso de archivo (en imágenes simples)</li>
-      <li>Comprimen muy bien con GZIP.</li>
+      <li>Comprimen muy bien con GZIP</li>
       <li>Independientes de la resolución</li>
       <li>Control por CSS</li>
       <li>Animación e interactividad</li>
     </ul>
     <hr>
     <ul>
-      <li><strong>Buenos para: </strong> Iconos, lementos de UI</li>
+      <li><strong>Buenos para: </strong> Iconos, elementos de UI</li>
       <li><strong>Malos para: </strong> Fotografías</li>
     </ul>
   </section>
@@ -430,7 +430,7 @@
   </section>
 
   <section>
-    <p>La técnica de <i lang="en">sprites</i> proviene de la industria del videojuego y consiste en combinar diferentes imágenes en una sóla para luego acceder solo al fragmento de imágen que necesitamos en cada caso.</p>
+    <p>La técnica de <i lang="en">sprites</i> proviene de la industria del videojuego y consiste en combinar diferentes imágenes en una sóla para luego acceder únicamente al fragmento de imágen que necesitamos en cada caso.</p>
 
     <p>En web, esto nos permite tener una sola llamada al servidor en lugar de una por cada imágen.</p>
 
@@ -610,9 +610,9 @@
 
   <section>
     <h2>Enlaces relacionados:</h2>
-    <ul>
+    <ul class="related-links">
       <li>
-        <a href="http://addyosmani.com/blog/image-optimization-tools/">“Tools for image optimization”</a> - <i>Addy Osmani</i>
+        <a href="http://addyosmani.com/blog/image-optimization-tools/">“Tools for image optimization”</a> <i>&#8213; Addy Osmani</i>
       </li>
 
       <li>
@@ -620,7 +620,7 @@
       </li>
 
       <li>
-        <a href="https://www.youtube.com/watch?v=vCHkpxPP6Es">“Advanced Image Compression Techniques Tutorial”</a> - <i>Tobias Baldauf</i>
+        <a href="https://www.youtube.com/watch?v=vCHkpxPP6Es">“Advanced Image Compression Techniques Tutorial”</a> <i>&#8213; Tobias Baldauf</i>
       </li>
   </section>
 </section>
@@ -628,14 +628,13 @@
 
 <section>
   <section>
-    <h1>Nuevos Formatos de Imágenes</h1>
+    <h1>Nuevos Formatos de Imágen</h1>
   </section>
 
   <section>
     <h2>WEBP</h2>
     <figure>
       <img src="img/webp.png" alt="" style="height: 30rem">
-      <figcaption class="fz-s"><a href=""></a></figcaption>
     </figure>
   </section>
 
@@ -651,8 +650,8 @@
     <ul>
       <li><strong>Contras:</strong>
         <ul>
-          <li><a href="">Escaso soporte en navegadores</a> (excepto Chrome y Opera).</li>
-          <li>En compresiones altas puede dar un efecto de posterizado.</li>
+          <li><a href="http://caniuse.com/#search=webp">Escaso soporte en navegadores</a> (excepto Chrome y Opera)</li>
+          <li>En compresiones altas puede dar un efecto de posterizado</li>
         </ul>
       </li>
     </ul>
@@ -660,7 +659,7 @@
   </section>
 
   <section>
-    <h2>BPG (1987) <small style="display: block;">(Better Portable Graphics)</small></h2>
+    <h2>BPG <small style="display: block;">(Better Portable Graphics)</small></h2>
 
     <figure>
       <img src="img/bpg.png" alt="" style="height: 30rem">
@@ -677,8 +676,8 @@
     </ul>
     <hr>
     <ul>
-      <li><strong>Pros:</strong> Tiene soporte en todos los browser con un decodificador por js (56kb gzip).</li>
-      <li><strong>Contras:</strong> Pocas herramientas para compilarlo y renderizado es lento.</li>
+      <li><strong>Pros:</strong> Tiene soporte en todos los browser con un decodificador por js (56kb gzip)</li>
+      <li><strong>Contras:</strong> Pocas herramientas para compilarlo y el renderizado es lento</li>
     </ul>
   </section>
 
